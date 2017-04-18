@@ -1,0 +1,3007 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/tmont/nginx-conf#readme">nginx-conf (v1.3.0)</a>
+</h1>
+<h4>Dynamically update nginx configuration files via programmatic API</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf">module nginx-conf</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile
+            <span class="apidocSignatureSpan">(tree, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.create">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.create
+            <span class="apidocSignatureSpan">(file, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.createFromSource">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.createFromSource
+            <span class="apidocSignatureSpan">(source, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.die">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.die
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.flush">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.flush
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.live">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.live
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.toString">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.write">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.write
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parse">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.parse
+            <span class="apidocSignatureSpan">(source, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parseFile">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.parseFile
+            <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parseNext">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.parseNext
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readComment">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readComment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readString">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readVerbatimBlock
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readWord">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readWord
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.setError">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.setError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parse">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>parse
+            <span class="apidocSignatureSpan">(source, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parseFile">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>parseFile
+            <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">nginx-conf.</span>conf</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">nginx-conf.</span>parser</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">nginx-conf.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile">module nginx-conf.NginxConfFile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.NginxConfFile">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile
+            <span class="apidocSignatureSpan">(tree, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.create">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>create
+            <span class="apidocSignatureSpan">(file, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.createFromSource">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>createFromSource
+            <span class="apidocSignatureSpan">(source, options, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.create">module nginx-conf.NginxConfFile.create</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.create.create">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>create
+            <span class="apidocSignatureSpan">(file, options, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.createFromSource">module nginx-conf.NginxConfFile.createFromSource</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.createFromSource.createFromSource">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>createFromSource
+            <span class="apidocSignatureSpan">(source, options, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype">module nginx-conf.NginxConfFile.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.die">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>die
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.flush">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>flush
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.live">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>live
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.toString">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.write">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>write
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.die">module nginx-conf.NginxConfFile.prototype.die</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.die.die">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>die
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.flush">module nginx-conf.NginxConfFile.prototype.flush</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.flush.flush">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>flush
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.live">module nginx-conf.NginxConfFile.prototype.live</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.live.live">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>live
+            <span class="apidocSignatureSpan">(file)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.toString">module nginx-conf.NginxConfFile.prototype.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.toString.toString">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.write">module nginx-conf.NginxConfFile.prototype.write</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxConfFile.prototype.write.write">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>write
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser">module nginx-conf.NginxParser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.NginxParser">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype">module nginx-conf.NginxParser.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parse">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parse
+            <span class="apidocSignatureSpan">(source, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parseFile">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseFile
+            <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parseNext">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseNext
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readComment">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readComment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readString">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readVerbatimBlock
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readWord">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readWord
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.setError">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>setError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.parse">module nginx-conf.NginxParser.prototype.parse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parse.parse">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parse
+            <span class="apidocSignatureSpan">(source, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.parseFile">module nginx-conf.NginxParser.prototype.parseFile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parseFile.parseFile">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseFile
+            <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.parseNext">module nginx-conf.NginxParser.prototype.parseNext</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.parseNext.parseNext">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseNext
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readComment">module nginx-conf.NginxParser.prototype.readComment</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readComment.readComment">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readComment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readString">module nginx-conf.NginxParser.prototype.readString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readString.readString">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readVerbatimBlock">module nginx-conf.NginxParser.prototype.readVerbatimBlock</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock.readVerbatimBlock">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readVerbatimBlock
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readWord">module nginx-conf.NginxParser.prototype.readWord</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.readWord.readWord">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readWord
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.NginxParser.prototype.setError">module nginx-conf.NginxParser.prototype.setError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.NginxParser.prototype.setError.setError">
+            function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>setError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.conf">module nginx-conf.conf</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.conf.NginxConfFile">
+            function <span class="apidocSignatureSpan">nginx-conf.conf.</span>NginxConfFile
+            <span class="apidocSignatureSpan">(tree, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.parse">module nginx-conf.parse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parse.parse">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>parse
+            <span class="apidocSignatureSpan">(source, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.parseFile">module nginx-conf.parseFile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parseFile.parseFile">
+            function <span class="apidocSignatureSpan">nginx-conf.</span>parseFile
+            <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nginx-conf.parser">module nginx-conf.parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parser.NginxParser">
+            function <span class="apidocSignatureSpan">nginx-conf.parser.</span>NginxParser
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parser.parse">
+            function <span class="apidocSignatureSpan">nginx-conf.parser.</span>parse
+            <span class="apidocSignatureSpan">(source, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nginx-conf.parser.parseFile">
+            function <span class="apidocSignatureSpan">nginx-conf.parser.</span>parseFile
+            <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf" id="apidoc.module.nginx-conf">module nginx-conf</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile" id="apidoc.element.nginx-conf.NginxConfFile">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile
+        <span class="apidocSignatureSpan">(tree, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NginxConfFile(tree, options) {
+	options = options || {};
+	this.files = [];
+	this.tab = options.tab || '    ';
+	this._name = 'NginxConfFile';
+	this.liveListener = (function(file) {
+		return function() {
+			file.flush();
+		};
+	}(this));
+	this.writeTimeout = null;
+
+	createConfItem(this, this, { name: 'nginx' });
+	Object.defineProperty(this.nginx, '_root', {
+		writable: false,
+		value: true,
+		enumerable: false
+	});
+	for (var i = 0; i &lt; tree.children.length; i++) {
+		var node = tree.children[i];
+		createConfItem(this, this.nginx, node);
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.create" id="apidoc.element.nginx-conf.NginxConfFile.create">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.create
+        <span class="apidocSignatureSpan">(file, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.create = function (file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.parseFile(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.createFromSource" id="apidoc.element.nginx-conf.NginxConfFile.createFromSource">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.createFromSource
+        <span class="apidocSignatureSpan">(source, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.createFromSource = function (source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.parse(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.die" id="apidoc.element.nginx-conf.NginxConfFile.prototype.die">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.die
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.prototype.die = function (file) {
+	var index = this.files.indexOf(file);
+	if (index !== -1) {
+		this.files.splice(index, 1);
+		if (this.files.length == 0) {
+			this.removeListener('added removed changed', this.liveListener);
+		}
+	}
+
+	return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.flush" id="apidoc.element.nginx-conf.NginxConfFile.prototype.flush">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.flush
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.prototype.flush = function (callback) {
+	if (this.writeTimeout) {
+		clearTimeout(this.writeTimeout);
+	}
+
+	//the call to write() gets shoved into the event loop so that
+	//you can modify the tree more than once without hoping that
+	//no race conditions occur
+
+	//e.g. conf._remove('foo'); conf._remove('bar'); will only issue
+	//one call to write(), eliminating any possible race conditions
+	var self = this;
+	this.writeTimeout = setTimeout(function() {
+		self.write(function(err, wrote) {
+			if (!err &amp;&amp; wrote) {
+				self.emit('flushed');
+			}
+
+			callback &amp;&amp; callback(err);
+		});
+	}, 1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.live" id="apidoc.element.nginx-conf.NginxConfFile.prototype.live">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.live
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.prototype.live = function (file) {
+	if (this.files.indexOf(file) === -1) {
+		this.files.push(file);
+		if (this.files.length === 1) {
+			this.on('added', this.liveListener);
+			this.on('removed', this.liveListener);
+			this.on('changed', this.liveListener);
+		}
+	}
+
+	return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.toString" id="apidoc.element.nginx-conf.NginxConfFile.prototype.toString">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.prototype.toString = function () {
+	return this.nginx.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.write" id="apidoc.element.nginx-conf.NginxConfFile.prototype.write">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile.prototype.write
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxConfFile.prototype.write = function (callback) {
+	if (!this.files.length) {
+		callback &amp;&amp; callback(null, false);
+		return;
+	}
+
+	var contents = this.toString(),
+		len = this.files.length,
+		errors = [],
+		completed = 0;
+
+	for (var i = 0; i &lt; len; i++) {
+		fs.writeFile(this.files[i], contents, 'utf8', function(err) {
+			err &amp;&amp; errors.push(err);
+			completed++;
+			if (completed === len) {
+				callback &amp;&amp; callback(errors.length ? errors : null, true);
+			}
+		});
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser" id="apidoc.element.nginx-conf.NginxParser">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NginxParser() {
+	this.source = '';
+	this.index = -1;
+	this.tree = null;
+	this.context = null;
+	this.error = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parse" id="apidoc.element.nginx-conf.NginxParser.prototype.parse">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.parse
+        <span class="apidocSignatureSpan">(source, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.parse = function (source, callback) {
+	this.source = source;
+	this.index = 0;
+	this.tree = new NginxParseTreeNode('[root]');
+	this.context = new NginxParseTreeNode(null, null, this.tree);
+	this.error = null;
+
+	do {
+		this.parseNext();
+		if (this.error) {
+			callback &amp;&amp; callback(this.error, this.tree);
+			return;
+		}
+	} while (this.index &lt; this.source.length);
+
+	callback &amp;&amp; callback(this.error, this.tree);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parseFile" id="apidoc.element.nginx-conf.NginxParser.prototype.parseFile">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.parseFile
+        <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.parseFile = function (file, encoding, callback) {
+	var parser = this;
+	fs.readFile(file, encoding, function(err, contents) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		parser.parse(contents, callback);
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parseNext" id="apidoc.element.nginx-conf.NginxParser.prototype.parseNext">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.parseNext
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.parseNext = function () {
+	var c = this.source.charAt(this.index),
+		value;
+
+	if (!c) {
+		return;
+	}
+
+	switch (c) {
+		case '{':
+		case ';':
+			this.context.value = this.context.value.trim();
+			this.context.parent.children.push(this.context);
+
+			if (c === '{' &amp;&amp; this.context.name &amp;&amp; /_by_lua_block$/.test(this.context.name)) {
+				//special handling of lua blocks: they are not treated as a regular "block", which would
+				//have child directives and stuff. lua "blocks" are just lua code surrounded by "{ }".
+				if (this.context.value) {
+					//there's already a value set, that means something is weird (pretty sure this is invalid...)
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.setError(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.readVerbatimBlock();
+				this.context.isVerbatim = true;
+				this.context = new NginxParseTreeNode(null, null, this.context.parent);
+			} else {
+				//new context is child of current context, or a sibling to the parent
+				this.context = new NginxParseTreeNode(null, null, c === '{' ? this.context : this.context.parent);
+			}
+
+			this.index++;
+			break;
+		case '}':
+			//new context is sibling to the parent
+			this.context = new NginxParseTreeNode(null, null, this.context.parent.parent);
+			this.index++;
+			break;
+		case '\n':
+		case '\r':
+			if (this.context.value) {
+				this.context.value += c;
+			}
+			this.index++;
+			break;
+		case '\'':
+		case '"':
+			if (!this.context.name) {
+				this.context.name = this.readString();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+		default:
+			value = this.readWord();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+				if (ws) {
+					this.index += ws[0].length;
+				}
+			} else {
+				this.context.value += value;
+			}
+			break;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readComment" id="apidoc.element.nginx-conf.NginxParser.prototype.readComment">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readComment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.readComment = function () {
+	var result = /(.*?)(?:\r\n|\n|$)/.exec(this.source.substring(this.index));
+	this.index += result ? result[0].length : 0;
+	return result[1].substring(1); //ignore # character
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readString" id="apidoc.element.nginx-conf.NginxParser.prototype.readString">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.readString = function () {
+	var delimiter = this.source.charAt(this.index),
+		value = delimiter;
+	for (var i = this.index + 1; i &lt; this.source.length; i++) {
+		if (this.source.charAt(i) === '\\') {
+			value += this.source.charAt(i) + this.source.charAt(i + 1);
+			i++;
+			continue;
+		}
+		if (this.source.charAt(i) === delimiter) {
+			value += delimiter;
+			break;
+		}
+
+		value += this.source.charAt(i);
+	}
+
+	if (value.length &lt; 2 || value.charAt(value.length - 1) !== delimiter) {
+		this.setError('Unable to parse quote-delimited value (probably an unclosed string)');
+		return '';
+	}
+	this.index += value.length;
+	return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock" id="apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readVerbatimBlock
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.readVerbatimBlock = function () {
+	//can't just use regex because it has to count the number of matching {}
+	//NOTE: this will break for lua comments that contain "{" or "}"
+	var openingBrackets = 0,
+		closingBrackets = 0,
+		current,
+		result = '';
+
+	while (current = this.source.charAt(this.index)) {
+		switch (current) {
+			case '}':
+				closingBrackets++;
+				break;
+			case '{':
+				openingBrackets++;
+				break;
+		}
+
+		result += current;
+		this.index++;
+
+		if (openingBrackets === closingBrackets) {
+			break;
+		}
+	}
+
+	if (openingBrackets !== closingBrackets) {
+		this.setError('Verbatim bock not terminated. Are you missing a closing curly bracket?');
+		return '';
+	}
+
+	return result.replace(/^{/, '').replace(/}$/, '');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readWord" id="apidoc.element.nginx-conf.NginxParser.prototype.readWord">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.readWord
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.readWord = function () {
+	var result = /^(.+?)[\s#;{}'"]/.exec(this.source.substring(this.index));
+	if (!result) {
+		this.setError('Word not terminated. Are you missing a semicolon?');
+		return '';
+	}
+	this.index += result[1].length;
+	return result[1];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.setError" id="apidoc.element.nginx-conf.NginxParser.prototype.setError">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser.prototype.setError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NginxParser.prototype.setError = function (message) {
+	var line = (this.source.substring(0, this.index).match(/\n/g) || []).length + 1;
+
+	this.error = {
+		message: message,
+		index: this.index,
+		line: line
+	};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parse" id="apidoc.element.nginx-conf.parse">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>parse
+        <span class="apidocSignatureSpan">(source, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source, callback) {
+	new NginxParser().parse(source, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.createFromSource = function(source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parse</span>(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parseFile" id="apidoc.element.nginx-conf.parseFile">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>parseFile
+        <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, encoding, callback) {
+	new NginxParser().parseFile(file, encoding, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.create = function(file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parseFile</span>(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile" id="apidoc.module.nginx-conf.NginxConfFile">module nginx-conf.NginxConfFile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.NginxConfFile" id="apidoc.element.nginx-conf.NginxConfFile.NginxConfFile">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxConfFile
+        <span class="apidocSignatureSpan">(tree, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NginxConfFile(tree, options) {
+	options = options || {};
+	this.files = [];
+	this.tab = options.tab || '    ';
+	this._name = 'NginxConfFile';
+	this.liveListener = (function(file) {
+		return function() {
+			file.flush();
+		};
+	}(this));
+	this.writeTimeout = null;
+
+	createConfItem(this, this, { name: 'nginx' });
+	Object.defineProperty(this.nginx, '_root', {
+		writable: false,
+		value: true,
+		enumerable: false
+	});
+	for (var i = 0; i &lt; tree.children.length; i++) {
+		var node = tree.children[i];
+		createConfItem(this, this.nginx, node);
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.create" id="apidoc.element.nginx-conf.NginxConfFile.create">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>create
+        <span class="apidocSignatureSpan">(file, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function (file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.parseFile(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+nginx's directives.
+
+Note: `*_content_by_lua_block` directives are supported in `&gt;=v1.3.0`.
+
+```javascript
+var NginxConfFile = require('nginx-conf').NginxConfFile;
+
+NginxConfFile.<span class="apidocCodeKeywordSpan">create</span>('/etc/nginx.conf', function(err, conf) {
+if (err) {
+  console.log(err);
+  return;
+}
+
+//reading values
+console.log(conf.nginx.user._value); //www www
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.createFromSource" id="apidoc.element.nginx-conf.NginxConfFile.createFromSource">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>createFromSource
+        <span class="apidocSignatureSpan">(source, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createFromSource = function (source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.parse(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.create" id="apidoc.module.nginx-conf.NginxConfFile.create">module nginx-conf.NginxConfFile.create</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.create.create" id="apidoc.element.nginx-conf.NginxConfFile.create.create">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>create
+        <span class="apidocSignatureSpan">(file, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function (file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.parseFile(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+nginx's directives.
+
+Note: `*_content_by_lua_block` directives are supported in `&gt;=v1.3.0`.
+
+```javascript
+var NginxConfFile = require('nginx-conf').NginxConfFile;
+
+NginxConfFile.<span class="apidocCodeKeywordSpan">create</span>('/etc/nginx.conf', function(err, conf) {
+if (err) {
+  console.log(err);
+  return;
+}
+
+//reading values
+console.log(conf.nginx.user._value); //www www
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.createFromSource" id="apidoc.module.nginx-conf.NginxConfFile.createFromSource">module nginx-conf.NginxConfFile.createFromSource</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.createFromSource.createFromSource" id="apidoc.element.nginx-conf.NginxConfFile.createFromSource.createFromSource">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.</span>createFromSource
+        <span class="apidocSignatureSpan">(source, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createFromSource = function (source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.parse(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype" id="apidoc.module.nginx-conf.NginxConfFile.prototype">module nginx-conf.NginxConfFile.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.die" id="apidoc.element.nginx-conf.NginxConfFile.prototype.die">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>die
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">die = function (file) {
+	var index = this.files.indexOf(file);
+	if (index !== -1) {
+		this.files.splice(index, 1);
+		if (this.files.length == 0) {
+			this.removeListener('added removed changed', this.liveListener);
+		}
+	}
+
+	return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  console.log('finished writing to disk');
+});
+
+//listen to the flushed event to determine when the new file has been flushed to disk
+conf.nginx.events.connections._value = 1000;
+
+//don't write to disk when something changes
+conf.<span class="apidocCodeKeywordSpan">die</span>('/etc/nginx.conf');
+conf.nginx.events.connections._value = 2000; //change remains local, not in /etc/nginx.conf
+
+//write to a different file
+conf.live('/etc/nginx.conf.bak');
+
+//force the synchronization
+conf.flush();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.flush" id="apidoc.element.nginx-conf.NginxConfFile.prototype.flush">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>flush
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flush = function (callback) {
+	if (this.writeTimeout) {
+		clearTimeout(this.writeTimeout);
+	}
+
+	//the call to write() gets shoved into the event loop so that
+	//you can modify the tree more than once without hoping that
+	//no race conditions occur
+
+	//e.g. conf._remove('foo'); conf._remove('bar'); will only issue
+	//one call to write(), eliminating any possible race conditions
+	var self = this;
+	this.writeTimeout = setTimeout(function() {
+		self.write(function(err, wrote) {
+			if (!err &amp;&amp; wrote) {
+				self.emit('flushed');
+			}
+
+			callback &amp;&amp; callback(err);
+		});
+	}, 1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+conf.die('/etc/nginx.conf');
+conf.nginx.events.connections._value = 2000; //change remains local, not in /etc/nginx.conf
+
+//write to a different file
+conf.live('/etc/nginx.conf.bak');
+
+//force the synchronization
+conf.<span class="apidocCodeKeywordSpan">flush</span>();
+
+//adding and removing directives
+conf.nginx.http._add('add_header', 'Cache-Control max-age=315360000, public');
+console.log(conf.nginx.http.add_header._value); //Cache-Control max-age=315360000, public
+
+conf.nginx.http._add('add_header', 'X-Load-Balancer lb-01');
+conf.nginx.http._add('add_header', 'X-Secure true');
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.live" id="apidoc.element.nginx-conf.NginxConfFile.prototype.live">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>live
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">live = function (file) {
+	if (this.files.indexOf(file) === -1) {
+		this.files.push(file);
+		if (this.files.length === 1) {
+			this.on('added', this.liveListener);
+			this.on('removed', this.liveListener);
+			this.on('changed', this.liveListener);
+		}
+	}
+
+	return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+conf.nginx.events.connections._value = 1000;
+
+//don't write to disk when something changes
+conf.die('/etc/nginx.conf');
+conf.nginx.events.connections._value = 2000; //change remains local, not in /etc/nginx.conf
+
+//write to a different file
+conf.<span class="apidocCodeKeywordSpan">live</span>('/etc/nginx.conf.bak');
+
+//force the synchronization
+conf.flush();
+
+//adding and removing directives
+conf.nginx.http._add('add_header', 'Cache-Control max-age=315360000, public');
+console.log(conf.nginx.http.add_header._value); //Cache-Control max-age=315360000, public
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.toString" id="apidoc.element.nginx-conf.NginxConfFile.prototype.toString">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+	return this.nginx.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+	Object.defineProperty(newContext, '_value', {
+		enumerable: false,
+		get: function() {
+			return value;
+		},
+		set: function(newValue) {
+			newValue = newValue.<span class="apidocCodeKeywordSpan">toString</span>();
+			if (value === newValue) {
+				return;
+			}
+
+			var oldValue = value;
+			value = newValue;
+			file.emit('changed', newContext, oldValue);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.write" id="apidoc.element.nginx-conf.NginxConfFile.prototype.write">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>write
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (callback) {
+	if (!this.files.length) {
+		callback &amp;&amp; callback(null, false);
+		return;
+	}
+
+	var contents = this.toString(),
+		len = this.files.length,
+		errors = [],
+		completed = 0;
+
+	for (var i = 0; i &lt; len; i++) {
+		fs.writeFile(this.files[i], contents, 'utf8', function(err) {
+			err &amp;&amp; errors.push(err);
+			completed++;
+			if (completed === len) {
+				callback &amp;&amp; callback(errors.length ? errors : null, true);
+			}
+		});
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	//you can modify the tree more than once without hoping that
+	//no race conditions occur
+
+	//e.g. conf._remove('foo'); conf._remove('bar'); will only issue
+	//one call to write(), eliminating any possible race conditions
+	var self = this;
+	this.writeTimeout = setTimeout(function() {
+		self.<span class="apidocCodeKeywordSpan">write</span>(function(err, wrote) {
+			if (!err &amp;&amp; wrote) {
+				self.emit('flushed');
+			}
+
+			callback &amp;&amp; callback(err);
+		});
+	}, 1);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.die" id="apidoc.module.nginx-conf.NginxConfFile.prototype.die">module nginx-conf.NginxConfFile.prototype.die</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.die.die" id="apidoc.element.nginx-conf.NginxConfFile.prototype.die.die">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>die
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">die = function (file) {
+	var index = this.files.indexOf(file);
+	if (index !== -1) {
+		this.files.splice(index, 1);
+		if (this.files.length == 0) {
+			this.removeListener('added removed changed', this.liveListener);
+		}
+	}
+
+	return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  console.log('finished writing to disk');
+});
+
+//listen to the flushed event to determine when the new file has been flushed to disk
+conf.nginx.events.connections._value = 1000;
+
+//don't write to disk when something changes
+conf.<span class="apidocCodeKeywordSpan">die</span>('/etc/nginx.conf');
+conf.nginx.events.connections._value = 2000; //change remains local, not in /etc/nginx.conf
+
+//write to a different file
+conf.live('/etc/nginx.conf.bak');
+
+//force the synchronization
+conf.flush();
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.flush" id="apidoc.module.nginx-conf.NginxConfFile.prototype.flush">module nginx-conf.NginxConfFile.prototype.flush</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.flush.flush" id="apidoc.element.nginx-conf.NginxConfFile.prototype.flush.flush">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>flush
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flush = function (callback) {
+	if (this.writeTimeout) {
+		clearTimeout(this.writeTimeout);
+	}
+
+	//the call to write() gets shoved into the event loop so that
+	//you can modify the tree more than once without hoping that
+	//no race conditions occur
+
+	//e.g. conf._remove('foo'); conf._remove('bar'); will only issue
+	//one call to write(), eliminating any possible race conditions
+	var self = this;
+	this.writeTimeout = setTimeout(function() {
+		self.write(function(err, wrote) {
+			if (!err &amp;&amp; wrote) {
+				self.emit('flushed');
+			}
+
+			callback &amp;&amp; callback(err);
+		});
+	}, 1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+conf.die('/etc/nginx.conf');
+conf.nginx.events.connections._value = 2000; //change remains local, not in /etc/nginx.conf
+
+//write to a different file
+conf.live('/etc/nginx.conf.bak');
+
+//force the synchronization
+conf.<span class="apidocCodeKeywordSpan">flush</span>();
+
+//adding and removing directives
+conf.nginx.http._add('add_header', 'Cache-Control max-age=315360000, public');
+console.log(conf.nginx.http.add_header._value); //Cache-Control max-age=315360000, public
+
+conf.nginx.http._add('add_header', 'X-Load-Balancer lb-01');
+conf.nginx.http._add('add_header', 'X-Secure true');
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.live" id="apidoc.module.nginx-conf.NginxConfFile.prototype.live">module nginx-conf.NginxConfFile.prototype.live</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.live.live" id="apidoc.element.nginx-conf.NginxConfFile.prototype.live.live">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>live
+        <span class="apidocSignatureSpan">(file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">live = function (file) {
+	if (this.files.indexOf(file) === -1) {
+		this.files.push(file);
+		if (this.files.length === 1) {
+			this.on('added', this.liveListener);
+			this.on('removed', this.liveListener);
+			this.on('changed', this.liveListener);
+		}
+	}
+
+	return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+conf.nginx.events.connections._value = 1000;
+
+//don't write to disk when something changes
+conf.die('/etc/nginx.conf');
+conf.nginx.events.connections._value = 2000; //change remains local, not in /etc/nginx.conf
+
+//write to a different file
+conf.<span class="apidocCodeKeywordSpan">live</span>('/etc/nginx.conf.bak');
+
+//force the synchronization
+conf.flush();
+
+//adding and removing directives
+conf.nginx.http._add('add_header', 'Cache-Control max-age=315360000, public');
+console.log(conf.nginx.http.add_header._value); //Cache-Control max-age=315360000, public
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.toString" id="apidoc.module.nginx-conf.NginxConfFile.prototype.toString">module nginx-conf.NginxConfFile.prototype.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.toString.toString" id="apidoc.element.nginx-conf.NginxConfFile.prototype.toString.toString">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+	Object.defineProperty(newContext, '_value', {
+		enumerable: false,
+		get: function() {
+			return value;
+		},
+		set: function(newValue) {
+			newValue = newValue.<span class="apidocCodeKeywordSpan">toString</span>();
+			if (value === newValue) {
+				return;
+			}
+
+			var oldValue = value;
+			value = newValue;
+			file.emit('changed', newContext, oldValue);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxConfFile.prototype.write" id="apidoc.module.nginx-conf.NginxConfFile.prototype.write">module nginx-conf.NginxConfFile.prototype.write</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxConfFile.prototype.write.write" id="apidoc.element.nginx-conf.NginxConfFile.prototype.write.write">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxConfFile.prototype.</span>write
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (callback) {
+	if (!this.files.length) {
+		callback &amp;&amp; callback(null, false);
+		return;
+	}
+
+	var contents = this.toString(),
+		len = this.files.length,
+		errors = [],
+		completed = 0;
+
+	for (var i = 0; i &lt; len; i++) {
+		fs.writeFile(this.files[i], contents, 'utf8', function(err) {
+			err &amp;&amp; errors.push(err);
+			completed++;
+			if (completed === len) {
+				callback &amp;&amp; callback(errors.length ? errors : null, true);
+			}
+		});
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	//you can modify the tree more than once without hoping that
+	//no race conditions occur
+
+	//e.g. conf._remove('foo'); conf._remove('bar'); will only issue
+	//one call to write(), eliminating any possible race conditions
+	var self = this;
+	this.writeTimeout = setTimeout(function() {
+		self.<span class="apidocCodeKeywordSpan">write</span>(function(err, wrote) {
+			if (!err &amp;&amp; wrote) {
+				self.emit('flushed');
+			}
+
+			callback &amp;&amp; callback(err);
+		});
+	}, 1);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser" id="apidoc.module.nginx-conf.NginxParser">module nginx-conf.NginxParser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.NginxParser" id="apidoc.element.nginx-conf.NginxParser.NginxParser">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>NginxParser
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NginxParser() {
+	this.source = '';
+	this.index = -1;
+	this.tree = null;
+	this.context = null;
+	this.error = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype" id="apidoc.module.nginx-conf.NginxParser.prototype">module nginx-conf.NginxParser.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parse" id="apidoc.element.nginx-conf.NginxParser.prototype.parse">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parse
+        <span class="apidocSignatureSpan">(source, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source, callback) {
+	this.source = source;
+	this.index = 0;
+	this.tree = new NginxParseTreeNode('[root]');
+	this.context = new NginxParseTreeNode(null, null, this.tree);
+	this.error = null;
+
+	do {
+		this.parseNext();
+		if (this.error) {
+			callback &amp;&amp; callback(this.error, this.tree);
+			return;
+		}
+	} while (this.index &lt; this.source.length);
+
+	callback &amp;&amp; callback(this.error, this.tree);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.createFromSource = function(source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parse</span>(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parseFile" id="apidoc.element.nginx-conf.NginxParser.prototype.parseFile">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseFile
+        <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, encoding, callback) {
+	var parser = this;
+	fs.readFile(file, encoding, function(err, contents) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		parser.parse(contents, callback);
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.create = function(file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parseFile</span>(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parseNext" id="apidoc.element.nginx-conf.NginxParser.prototype.parseNext">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseNext
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseNext = function () {
+	var c = this.source.charAt(this.index),
+		value;
+
+	if (!c) {
+		return;
+	}
+
+	switch (c) {
+		case '{':
+		case ';':
+			this.context.value = this.context.value.trim();
+			this.context.parent.children.push(this.context);
+
+			if (c === '{' &amp;&amp; this.context.name &amp;&amp; /_by_lua_block$/.test(this.context.name)) {
+				//special handling of lua blocks: they are not treated as a regular "block", which would
+				//have child directives and stuff. lua "blocks" are just lua code surrounded by "{ }".
+				if (this.context.value) {
+					//there's already a value set, that means something is weird (pretty sure this is invalid...)
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.setError(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.readVerbatimBlock();
+				this.context.isVerbatim = true;
+				this.context = new NginxParseTreeNode(null, null, this.context.parent);
+			} else {
+				//new context is child of current context, or a sibling to the parent
+				this.context = new NginxParseTreeNode(null, null, c === '{' ? this.context : this.context.parent);
+			}
+
+			this.index++;
+			break;
+		case '}':
+			//new context is sibling to the parent
+			this.context = new NginxParseTreeNode(null, null, this.context.parent.parent);
+			this.index++;
+			break;
+		case '\n':
+		case '\r':
+			if (this.context.value) {
+				this.context.value += c;
+			}
+			this.index++;
+			break;
+		case '\'':
+		case '"':
+			if (!this.context.name) {
+				this.context.name = this.readString();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+		default:
+			value = this.readWord();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+				if (ws) {
+					this.index += ws[0].length;
+				}
+			} else {
+				this.context.value += value;
+			}
+			break;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	this.source = source;
+	this.index = 0;
+	this.tree = new NginxParseTreeNode('[root]');
+	this.context = new NginxParseTreeNode(null, null, this.tree);
+	this.error = null;
+
+	do {
+		this.<span class="apidocCodeKeywordSpan">parseNext</span>();
+		if (this.error) {
+			callback &amp;&amp; callback(this.error, this.tree);
+			return;
+		}
+	} while (this.index &lt; this.source.length);
+
+	callback &amp;&amp; callback(this.error, this.tree);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readComment" id="apidoc.element.nginx-conf.NginxParser.prototype.readComment">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readComment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readComment = function () {
+	var result = /(.*?)(?:\r\n|\n|$)/.exec(this.source.substring(this.index));
+	this.index += result ? result[0].length : 0;
+	return result[1].substring(1); //ignore # character
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+			if (!this.context.name) {
+				this.context.name = this.readString();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.<span class="apidocCodeKeywordSpan">readComment</span>());
+			break;
+		default:
+			value = this.readWord();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readString" id="apidoc.element.nginx-conf.NginxParser.prototype.readString">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readString = function () {
+	var delimiter = this.source.charAt(this.index),
+		value = delimiter;
+	for (var i = this.index + 1; i &lt; this.source.length; i++) {
+		if (this.source.charAt(i) === '\\') {
+			value += this.source.charAt(i) + this.source.charAt(i + 1);
+			i++;
+			continue;
+		}
+		if (this.source.charAt(i) === delimiter) {
+			value += delimiter;
+			break;
+		}
+
+		value += this.source.charAt(i);
+	}
+
+	if (value.length &lt; 2 || value.charAt(value.length - 1) !== delimiter) {
+		this.setError('Unable to parse quote-delimited value (probably an unclosed string)');
+		return '';
+	}
+	this.index += value.length;
+	return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+				this.context.value += c;
+			}
+			this.index++;
+			break;
+		case '\'':
+		case '"':
+			if (!this.context.name) {
+				this.context.name = this.<span class="apidocCodeKeywordSpan">readString</span>();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock" id="apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readVerbatimBlock
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readVerbatimBlock = function () {
+	//can't just use regex because it has to count the number of matching {}
+	//NOTE: this will break for lua comments that contain "{" or "}"
+	var openingBrackets = 0,
+		closingBrackets = 0,
+		current,
+		result = '';
+
+	while (current = this.source.charAt(this.index)) {
+		switch (current) {
+			case '}':
+				closingBrackets++;
+				break;
+			case '{':
+				openingBrackets++;
+				break;
+		}
+
+		result += current;
+		this.index++;
+
+		if (openingBrackets === closingBrackets) {
+			break;
+		}
+	}
+
+	if (openingBrackets !== closingBrackets) {
+		this.setError('Verbatim bock not terminated. Are you missing a closing curly bracket?');
+		return '';
+	}
+
+	return result.replace(/^{/, '').replace(/}$/, '');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.setError(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.<span class="apidocCodeKeywordSpan">readVerbatimBlock</span>();
+				this.context.isVerbatim = true;
+				this.context = new NginxParseTreeNode(null, null, this.context.parent);
+			} else {
+				//new context is child of current context, or a sibling to the parent
+				this.context = new NginxParseTreeNode(null, null, c === '{' ? this.context : this.context.parent);
+			}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readWord" id="apidoc.element.nginx-conf.NginxParser.prototype.readWord">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readWord
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readWord = function () {
+	var result = /^(.+?)[\s#;{}'"]/.exec(this.source.substring(this.index));
+	if (!result) {
+		this.setError('Word not terminated. Are you missing a semicolon?');
+		return '';
+	}
+	this.index += result[1].length;
+	return result[1];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+		default:
+			value = this.<span class="apidocCodeKeywordSpan">readWord</span>();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+				if (ws) {
+					this.index += ws[0].length;
+				}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.setError" id="apidoc.element.nginx-conf.NginxParser.prototype.setError">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>setError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setError = function (message) {
+	var line = (this.source.substring(0, this.index).match(/\n/g) || []).length + 1;
+
+	this.error = {
+		message: message,
+		index: this.index,
+		line: line
+	};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+			if (c === '{' &amp;&amp; this.context.name &amp;&amp; /_by_lua_block$/.test(this.context.name)) {
+				//special handling of lua blocks: they are not treated as a regular "block", which would
+				//have child directives and stuff. lua "blocks" are just lua code surrounded by "{ }".
+				if (this.context.value) {
+					//there's already a value set, that means something is weird (pretty sure this is invalid...)
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.<span class="apidocCodeKeywordSpan">setError</span>(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.readVerbatimBlock();
+				this.context.isVerbatim = true;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.parse" id="apidoc.module.nginx-conf.NginxParser.prototype.parse">module nginx-conf.NginxParser.prototype.parse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parse.parse" id="apidoc.element.nginx-conf.NginxParser.prototype.parse.parse">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parse
+        <span class="apidocSignatureSpan">(source, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source, callback) {
+	this.source = source;
+	this.index = 0;
+	this.tree = new NginxParseTreeNode('[root]');
+	this.context = new NginxParseTreeNode(null, null, this.tree);
+	this.error = null;
+
+	do {
+		this.parseNext();
+		if (this.error) {
+			callback &amp;&amp; callback(this.error, this.tree);
+			return;
+		}
+	} while (this.index &lt; this.source.length);
+
+	callback &amp;&amp; callback(this.error, this.tree);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.createFromSource = function(source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parse</span>(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.parseFile" id="apidoc.module.nginx-conf.NginxParser.prototype.parseFile">module nginx-conf.NginxParser.prototype.parseFile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parseFile.parseFile" id="apidoc.element.nginx-conf.NginxParser.prototype.parseFile.parseFile">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseFile
+        <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, encoding, callback) {
+	var parser = this;
+	fs.readFile(file, encoding, function(err, contents) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		parser.parse(contents, callback);
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.create = function(file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parseFile</span>(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.parseNext" id="apidoc.module.nginx-conf.NginxParser.prototype.parseNext">module nginx-conf.NginxParser.prototype.parseNext</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.parseNext.parseNext" id="apidoc.element.nginx-conf.NginxParser.prototype.parseNext.parseNext">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>parseNext
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseNext = function () {
+	var c = this.source.charAt(this.index),
+		value;
+
+	if (!c) {
+		return;
+	}
+
+	switch (c) {
+		case '{':
+		case ';':
+			this.context.value = this.context.value.trim();
+			this.context.parent.children.push(this.context);
+
+			if (c === '{' &amp;&amp; this.context.name &amp;&amp; /_by_lua_block$/.test(this.context.name)) {
+				//special handling of lua blocks: they are not treated as a regular "block", which would
+				//have child directives and stuff. lua "blocks" are just lua code surrounded by "{ }".
+				if (this.context.value) {
+					//there's already a value set, that means something is weird (pretty sure this is invalid...)
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.setError(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.readVerbatimBlock();
+				this.context.isVerbatim = true;
+				this.context = new NginxParseTreeNode(null, null, this.context.parent);
+			} else {
+				//new context is child of current context, or a sibling to the parent
+				this.context = new NginxParseTreeNode(null, null, c === '{' ? this.context : this.context.parent);
+			}
+
+			this.index++;
+			break;
+		case '}':
+			//new context is sibling to the parent
+			this.context = new NginxParseTreeNode(null, null, this.context.parent.parent);
+			this.index++;
+			break;
+		case '\n':
+		case '\r':
+			if (this.context.value) {
+				this.context.value += c;
+			}
+			this.index++;
+			break;
+		case '\'':
+		case '"':
+			if (!this.context.name) {
+				this.context.name = this.readString();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+		default:
+			value = this.readWord();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+				if (ws) {
+					this.index += ws[0].length;
+				}
+			} else {
+				this.context.value += value;
+			}
+			break;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	this.source = source;
+	this.index = 0;
+	this.tree = new NginxParseTreeNode('[root]');
+	this.context = new NginxParseTreeNode(null, null, this.tree);
+	this.error = null;
+
+	do {
+		this.<span class="apidocCodeKeywordSpan">parseNext</span>();
+		if (this.error) {
+			callback &amp;&amp; callback(this.error, this.tree);
+			return;
+		}
+	} while (this.index &lt; this.source.length);
+
+	callback &amp;&amp; callback(this.error, this.tree);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readComment" id="apidoc.module.nginx-conf.NginxParser.prototype.readComment">module nginx-conf.NginxParser.prototype.readComment</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readComment.readComment" id="apidoc.element.nginx-conf.NginxParser.prototype.readComment.readComment">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readComment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readComment = function () {
+	var result = /(.*?)(?:\r\n|\n|$)/.exec(this.source.substring(this.index));
+	this.index += result ? result[0].length : 0;
+	return result[1].substring(1); //ignore # character
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+			if (!this.context.name) {
+				this.context.name = this.readString();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.<span class="apidocCodeKeywordSpan">readComment</span>());
+			break;
+		default:
+			value = this.readWord();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readString" id="apidoc.module.nginx-conf.NginxParser.prototype.readString">module nginx-conf.NginxParser.prototype.readString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readString.readString" id="apidoc.element.nginx-conf.NginxParser.prototype.readString.readString">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readString = function () {
+	var delimiter = this.source.charAt(this.index),
+		value = delimiter;
+	for (var i = this.index + 1; i &lt; this.source.length; i++) {
+		if (this.source.charAt(i) === '\\') {
+			value += this.source.charAt(i) + this.source.charAt(i + 1);
+			i++;
+			continue;
+		}
+		if (this.source.charAt(i) === delimiter) {
+			value += delimiter;
+			break;
+		}
+
+		value += this.source.charAt(i);
+	}
+
+	if (value.length &lt; 2 || value.charAt(value.length - 1) !== delimiter) {
+		this.setError('Unable to parse quote-delimited value (probably an unclosed string)');
+		return '';
+	}
+	this.index += value.length;
+	return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+				this.context.value += c;
+			}
+			this.index++;
+			break;
+		case '\'':
+		case '"':
+			if (!this.context.name) {
+				this.context.name = this.<span class="apidocCodeKeywordSpan">readString</span>();
+			} else {
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readVerbatimBlock" id="apidoc.module.nginx-conf.NginxParser.prototype.readVerbatimBlock">module nginx-conf.NginxParser.prototype.readVerbatimBlock</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock.readVerbatimBlock" id="apidoc.element.nginx-conf.NginxParser.prototype.readVerbatimBlock.readVerbatimBlock">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readVerbatimBlock
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readVerbatimBlock = function () {
+	//can't just use regex because it has to count the number of matching {}
+	//NOTE: this will break for lua comments that contain "{" or "}"
+	var openingBrackets = 0,
+		closingBrackets = 0,
+		current,
+		result = '';
+
+	while (current = this.source.charAt(this.index)) {
+		switch (current) {
+			case '}':
+				closingBrackets++;
+				break;
+			case '{':
+				openingBrackets++;
+				break;
+		}
+
+		result += current;
+		this.index++;
+
+		if (openingBrackets === closingBrackets) {
+			break;
+		}
+	}
+
+	if (openingBrackets !== closingBrackets) {
+		this.setError('Verbatim bock not terminated. Are you missing a closing curly bracket?');
+		return '';
+	}
+
+	return result.replace(/^{/, '').replace(/}$/, '');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.setError(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.<span class="apidocCodeKeywordSpan">readVerbatimBlock</span>();
+				this.context.isVerbatim = true;
+				this.context = new NginxParseTreeNode(null, null, this.context.parent);
+			} else {
+				//new context is child of current context, or a sibling to the parent
+				this.context = new NginxParseTreeNode(null, null, c === '{' ? this.context : this.context.parent);
+			}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.readWord" id="apidoc.module.nginx-conf.NginxParser.prototype.readWord">module nginx-conf.NginxParser.prototype.readWord</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.readWord.readWord" id="apidoc.element.nginx-conf.NginxParser.prototype.readWord.readWord">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>readWord
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readWord = function () {
+	var result = /^(.+?)[\s#;{}'"]/.exec(this.source.substring(this.index));
+	if (!result) {
+		this.setError('Word not terminated. Are you missing a semicolon?');
+		return '';
+	}
+	this.index += result[1].length;
+	return result[1];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+				this.context.value += this.readString();
+			}
+			break;
+		case '#':
+			this.context.comments.push(this.readComment());
+			break;
+		default:
+			value = this.<span class="apidocCodeKeywordSpan">readWord</span>();
+			if (!this.context.name) {
+				this.context.name = value.trim();
+				//read trailing whitespace
+				var ws = /^\s*/.exec(this.source.substring(this.index));
+				if (ws) {
+					this.index += ws[0].length;
+				}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.NginxParser.prototype.setError" id="apidoc.module.nginx-conf.NginxParser.prototype.setError">module nginx-conf.NginxParser.prototype.setError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.NginxParser.prototype.setError.setError" id="apidoc.element.nginx-conf.NginxParser.prototype.setError.setError">
+        function <span class="apidocSignatureSpan">nginx-conf.NginxParser.prototype.</span>setError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setError = function (message) {
+	var line = (this.source.substring(0, this.index).match(/\n/g) || []).length + 1;
+
+	this.error = {
+		message: message,
+		index: this.index,
+		line: line
+	};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+			if (c === '{' &amp;&amp; this.context.name &amp;&amp; /_by_lua_block$/.test(this.context.name)) {
+				//special handling of lua blocks: they are not treated as a regular "block", which would
+				//have child directives and stuff. lua "blocks" are just lua code surrounded by "{ }".
+				if (this.context.value) {
+					//there's already a value set, that means something is weird (pretty sure this is invalid...)
+					//basically the "lol" in something like this: content_by_lua_block lol { echo 'hello' }
+					this.<span class="apidocCodeKeywordSpan">setError</span>(
+						'Already a value set for Lua block (alert nginx-conf developers if your syntax is valid)'
+					);
+					break;
+				}
+
+				this.context.value = this.readVerbatimBlock();
+				this.context.isVerbatim = true;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.conf" id="apidoc.module.nginx-conf.conf">module nginx-conf.conf</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.conf.NginxConfFile" id="apidoc.element.nginx-conf.conf.NginxConfFile">
+        function <span class="apidocSignatureSpan">nginx-conf.conf.</span>NginxConfFile
+        <span class="apidocSignatureSpan">(tree, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NginxConfFile(tree, options) {
+	options = options || {};
+	this.files = [];
+	this.tab = options.tab || '    ';
+	this._name = 'NginxConfFile';
+	this.liveListener = (function(file) {
+		return function() {
+			file.flush();
+		};
+	}(this));
+	this.writeTimeout = null;
+
+	createConfItem(this, this, { name: 'nginx' });
+	Object.defineProperty(this.nginx, '_root', {
+		writable: false,
+		value: true,
+		enumerable: false
+	});
+	for (var i = 0; i &lt; tree.children.length; i++) {
+		var node = tree.children[i];
+		createConfItem(this, this.nginx, node);
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.parse" id="apidoc.module.nginx-conf.parse">module nginx-conf.parse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parse.parse" id="apidoc.element.nginx-conf.parse.parse">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>parse
+        <span class="apidocSignatureSpan">(source, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source, callback) {
+	new NginxParser().parse(source, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.createFromSource = function(source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parse</span>(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.parseFile" id="apidoc.module.nginx-conf.parseFile">module nginx-conf.parseFile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parseFile.parseFile" id="apidoc.element.nginx-conf.parseFile.parseFile">
+        function <span class="apidocSignatureSpan">nginx-conf.</span>parseFile
+        <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, encoding, callback) {
+	new NginxParser().parseFile(file, encoding, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.create = function(file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parseFile</span>(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nginx-conf.parser" id="apidoc.module.nginx-conf.parser">module nginx-conf.parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parser.NginxParser" id="apidoc.element.nginx-conf.parser.NginxParser">
+        function <span class="apidocSignatureSpan">nginx-conf.parser.</span>NginxParser
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NginxParser() {
+	this.source = '';
+	this.index = -1;
+	this.tree = null;
+	this.context = null;
+	this.error = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parser.parse" id="apidoc.element.nginx-conf.parser.parse">
+        function <span class="apidocSignatureSpan">nginx-conf.parser.</span>parse
+        <span class="apidocSignatureSpan">(source, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source, callback) {
+	new NginxParser().parse(source, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.createFromSource = function(source, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parse</span>(source, function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options));
+	});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.nginx-conf.parser.parseFile" id="apidoc.element.nginx-conf.parser.parseFile">
+        function <span class="apidocSignatureSpan">nginx-conf.parser.</span>parseFile
+        <span class="apidocSignatureSpan">(file, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, encoding, callback) {
+	new NginxParser().parseFile(file, encoding, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+NginxConfFile.create = function(file, options, callback) {
+	if (typeof(options) === 'function') {
+		callback = options;
+		options = null;
+	}
+
+	parser.<span class="apidocCodeKeywordSpan">parseFile</span>(file, 'utf8', function(err, tree) {
+		if (err) {
+			callback &amp;&amp; callback(err);
+			return;
+		}
+
+		callback &amp;&amp; callback(null, new NginxConfFile(tree, options).live(file));
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
