@@ -1,6 +1,6 @@
 # npmdoc-nginx-conf
 
-#### api documentation for  [nginx-conf (v1.3.0)](https://github.com/tmont/nginx-conf#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-nginx-conf.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nginx-conf) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nginx-conf.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nginx-conf)
+#### basic api documentation for  [nginx-conf (v1.3.0)](https://github.com/tmont/nginx-conf#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-nginx-conf.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nginx-conf) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nginx-conf.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nginx-conf)
 
 #### Dynamically update nginx configuration files via programmatic API
 
@@ -67,7 +67,8 @@
     "scripts": {
         "test": "mocha -R spec ./tests"
     },
-    "version": "1.3.0"
+    "version": "1.3.0",
+    "bin": {}
 }
 ```
 
